@@ -46,7 +46,7 @@ GENRE_CHOICES = (
 ('western', 'WESTERN') ,
 )
 
-AGE_RATING_LIST=(
+AGE_RATING_CHOICES=(
     ('G', 'G') ,
 ('PG', 'PG') ,
 ('PG-13', 'PG-13') ,
@@ -59,7 +59,7 @@ class Movie(models.Model):
     director = models.CharField(max_length=100, blank=True)
     actors = models.CharField(max_length=100, blank=True)
     summary = models.CharField(max_length=1000, blank=True)
-    age_rating = models.CharField(max_length=10,choices = AGE_RATING_LIST, default='G') #family friendly
+    age_rating = models.CharField(max_length=10,choices = AGE_RATING_CHOICES, default='G') #family friendly
     genre = models.CharField(max_length=50, choices = GENRE_CHOICES, default= '') #create movies, check genre here against list
     length = models.CharField(max_length=20, blank=True)
     languages = models.CharField(max_length=50, choices = LANGUAGE_CHOICES, default= 'English')
