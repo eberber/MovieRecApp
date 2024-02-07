@@ -1,0 +1,18 @@
+{% if movie_list %}
+    <ul>
+    {% for movie in movie_list%}
+        <li>{{": "}}{{movie.name }}</li>
+        <li>{{ movie.summary }}</li>
+        <li>{{ movie.actors }}</li>
+        <li>{{ movie.age_rating }}</li>
+        <li>{{ movie.genre }}</li>
+        <li>{{ movie.length }}</li>
+        <li>{{ movie.languages }}</li>
+        <br>
+
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No movies are available.</p>
+{% endif %}
