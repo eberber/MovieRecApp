@@ -56,6 +56,7 @@ AGE_RATING_CHOICES=(
 # Create your models here.
 class Movie(models.Model):
     name = models.CharField(max_length=200)
+    image_poster_name = models.CharField(max_length=100, blank=True)
     director = models.CharField(max_length=100, blank=True)
     actors = models.CharField(max_length=100, blank=True)
     summary = models.CharField(max_length=1000, blank=True)
