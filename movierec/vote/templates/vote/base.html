@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<head>
+    <title>Movie Finder!</title>
+    <link rel="stylesheet" href="{% static 'vote/style.css' %}">
+</head>
+
+<body>
+    <p id="name">test</p>
+
+    <div id="centerwrap">
+    <header class="name">Movie Finder! Welcome </header>
+    {% block movieList %}    
+    {% endblock %}
+    </div>
+</body>

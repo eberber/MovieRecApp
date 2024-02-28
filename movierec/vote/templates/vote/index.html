@@ -1,24 +1,24 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!-- <img src="{% static 'vote/style.css' %}"> -->
-<link rel="stylesheet" href="{% static 'vote/style.css' %}">
-<img src="{% static 'images/terrymfcrews.jpg'%}">
-{% if movie_list %}
-    <ul>
-    {% for movie in movie_list%}
-        <img src="{% static 'images/'%}{{movie.image_poster_name}}" heigh="150" width="150">
-        <li>{{": "}}{{movie.name }}</li>
-        <li>{{ movie.summary }}</li>
-        <li>{{ movie.actors }}</li>
-        <li>{{ movie.age_rating }}</li>
-        <li>{{ movie.genre }}</li>
-        <li>{{ movie.length }}</li>
-        <li>{{ movie.languages }}</li>
-        <br>
+{% block movieList %}
+        {% if movie_list %}
+            <ul>
+            {% for movie in movie_list%}
+                <img src="{% static 'images/'%}{{movie.image_poster_name}}" heigh="150" width="150">
+                <li><span class="name">{{movie.name }}</span></li>
+                <li>{{ movie.summary }}</li>
+                <li>{{ movie.actors }}</li>
+                <li>{{ movie.age_rating }}</li>
+                <li>{{ movie.genre }}</li>
+                <li>{{ movie.length }}</li>
+                <li>{{ movie.languages }}</li>
+                <br>
 
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No movies are available.</p>
+        {% endif %}
+{% endblock %}
 
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No movies are available.</p>
-{% endif %}

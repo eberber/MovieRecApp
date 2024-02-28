@@ -1,3 +1,14 @@
+#name{
+  font-weight: bold;
+  color:orange;
+}
+#centerwrap { 
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 960px;
+ }   
+
 img {
     border-radius: 8px;
   }
+  
