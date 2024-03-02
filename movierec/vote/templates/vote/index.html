@@ -2,23 +2,45 @@
 {% load static %}
 
 {% block movieList %}
-        {% if movie_list %}
+        <!--list movies  -->
+        {% if page_obj%}
             <ul>
-            {% for movie in movie_list%}
-                <img src="{% static 'images/'%}{{movie.image_poster_name}}" heigh="150" width="150">
-                <li><span class="name">{{movie.name }}</span></li>
-                <li>{{ movie.summary }}</li>
-                <li>{{ movie.actors }}</li>
-                <li>{{ movie.age_rating }}</li>
-                <li>{{ movie.genre }}</li>
-                <li>{{ movie.length }}</li>
-                <li>{{ movie.languages }}</li>
-                <br>
-
-            {% endfor %}
+                <div class="grid-container">
+                    {% for movie in page_obj%}
+                        <div>
+                        <img src="{% static 'images/'%}{{movie.image_poster_name}}" heigh="150" width="150">
+                        <li class="nameHighlight">{{movie.name }}</li>
+                        <li>{{ movie.summary }}</li>
+                        <li>{{ movie.actors }}</li>
+                        <li>{{ movie.age_rating }}</li>
+                        <li>{{ movie.genre }}</li>
+                        <li>{{ movie.length }}</li>
+                        <li>{{ movie.languages }}</li>
+                        <br>
+                    </div>
+                    {% endfor %}
+                </div>
             </ul>
         {% else %}
             <p>No movies are available.</p>
         {% endif %}
+        <!-- adds next/last page button -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
 {% endblock %}
 
