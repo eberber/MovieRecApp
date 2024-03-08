@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_list_or_404
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from .models import Choice, Movie
 from django.core.paginator import Paginator
 
@@ -9,7 +9,8 @@ def index(request):
    # movie_list = Movie.objects.order_by("name")
     #type(movie_list)
     movie_list = get_list_or_404(Movie.objects.order_by("name"))
-    paginator = Paginator(movie_list, 2)
+    #controls items per page
+    paginator = Paginator(movie_list, 9)
     """    list = []
     nl = "\n"
     for m in movie_list:
@@ -20,3 +21,10 @@ def index(request):
     #context = {"movie_list": movie_list}
     context = {"page_obj": page_obj}
     return render(request, "vote/index.html", context)
+
+def detail(request, movie_id):
+    try:
+        movie = Movie.objects.get(pk=movie_id)
+    except movie.DoesNotExist:
+        raise Http404("Movie does not exist")
+    return render(request, "vote/detail.html", {"movie": movie})

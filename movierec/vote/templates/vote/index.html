@@ -9,13 +9,8 @@
                     {% for movie in page_obj%}
                         <div>
                         <img src="{% static 'images/'%}{{movie.image_poster_name}}" heigh="150" width="150">
-                        <li class="nameHighlight">{{movie.name }}</li>
-                        <li>{{ movie.summary }}</li>
-                        <li>{{ movie.actors }}</li>
-                        <li>{{ movie.age_rating }}</li>
-                        <li>{{ movie.genre }}</li>
-                        <li>{{ movie.length }}</li>
-                        <li>{{ movie.languages }}</li>
+                        <li class="nameHighlight"><a href="/vote/{{ movie.id }}/">{{ movie.name }}</a></li>
+                        <button type = "button" onclick = "alert('Welcome to GeeksforGeeks')"  class="fa fa-thumbs-up" style="font-size:100px;color:black;"></button>
                         <br>
                     </div>
                     {% endfor %}
