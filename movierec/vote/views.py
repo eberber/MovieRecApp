@@ -28,3 +28,8 @@ def detail(request, movie_id):
     except movie.DoesNotExist:
         raise Http404("Movie does not exist")
     return render(request, "vote/detail.html", {"movie": movie})
+
+def like(request):
+
+
+    return render(request, "vote/like.html")

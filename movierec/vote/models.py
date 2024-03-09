@@ -64,7 +64,7 @@ class Movie(models.Model):
     genre = models.CharField(max_length=50, choices = GENRE_CHOICES, default= '') #create movies, check genre here against list
     length = models.CharField(max_length=20, blank=True)
     languages = models.CharField(max_length=50, choices = LANGUAGE_CHOICES, default= 'English')
-    
+
 
 class Choice(models.Model):
     movie = models.ForeignKey(Movie, on_delete = models.CASCADE)
