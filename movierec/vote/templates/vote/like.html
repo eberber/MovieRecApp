@@ -1,1 +1,4 @@
 <p>sup</p>
+{% if user and movie_obj%}
+<p>User: {{user.name}} set {{movie_obj.name}} to status: {{user.liked}} </p>
+{%endif%}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_list_or_404
 from django.http import Http404, HttpResponse
-from .models import Choice, Movie
+from .models import User, Movie
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -29,7 +29,16 @@ def detail(request, movie_id):
         raise Http404("Movie does not exist")
     return render(request, "vote/detail.html", {"movie": movie})
 
-def like(request):
-
-
-    return render(request, "vote/like.html")
+def like(request, movie_id):
+    if not User.objects.filter(name="Eric").exists():
+        print("CREATING NEW USER")
+        user = User.objects.create(name = "Eric")
+    user = User.objects.get(name="Eric")
+    movie_obj = Movie.objects.filter(id=movie_id)
+    print(user.movie.all())
+    if movie_obj not in user.movie.all():
+        print("ADDING NEW MOVIE OBJ")
+        user.movie.add(movie_id)
+    user.liked = True
+    context = {"user":user, "movie_obj": movie_obj}
+    return render(request, "vote/like.html", context)

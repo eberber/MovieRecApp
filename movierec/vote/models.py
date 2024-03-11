@@ -65,11 +65,14 @@ class Movie(models.Model):
     length = models.CharField(max_length=20, blank=True)
     languages = models.CharField(max_length=50, choices = LANGUAGE_CHOICES, default= 'English')
 
+    def __str__(self) -> str:
+        return self.name
 
-class Choice(models.Model):
-    movie = models.ForeignKey(Movie, on_delete = models.CASCADE)
+class User(models.Model):
+    movie = models.ManyToManyField(Movie)
     liked = models.BooleanField(default = False)
+    name = models.CharField(max_length=50, default = "John")
 
-
-
+    def __str__(self) -> str:
+        return self.name
     
