@@ -30,15 +30,17 @@ def detail(request, movie_id):
     return render(request, "vote/detail.html", {"movie": movie})
 
 def like(request, movie_id):
-    if not User.objects.filter(name="Eric").exists():
+    temp_user = "Tom"
+    if not User.objects.filter(name=temp_user).exists():
         print("CREATING NEW USER")
-        user = User.objects.create(name = "Eric")
-    user = User.objects.get(name="Eric")
+        user = User.objects.create(name = temp_user)
+    user = User.objects.get(name=temp_user)
+    #print(user.movie.all())
     movie_obj = Movie.objects.filter(id=movie_id)
-    print(user.movie.all())
     if movie_obj not in user.movie.all():
         print("ADDING NEW MOVIE OBJ")
         user.movie.add(movie_id)
-    user.liked = True
-    context = {"user":user, "movie_obj": movie_obj}
+    print(user.movie.all())
+    movie_name = movie_obj[0].name
+    context = {"user":user, "movie_name": movie_name}
     return render(request, "vote/like.html", context)

@@ -70,7 +70,6 @@ class Movie(models.Model):
 
 class User(models.Model):
     movie = models.ManyToManyField(Movie)
-    liked = models.BooleanField(default = False)
     name = models.CharField(max_length=50, default = "John")
 
     def __str__(self) -> str:
