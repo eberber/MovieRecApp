@@ -1,0 +1,6 @@
+<div>did this work</div>
+{%if liked_movies%}
+    {% for movie in liked_movies%}
+        {{movie.name}}
+    {%endfor%}
+{%endif%}
