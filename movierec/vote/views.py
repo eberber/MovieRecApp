@@ -63,7 +63,11 @@ def movie_recomender(request):
             recomended_movies.append(obj)
     print(recomended_movies)
     print(liked_genre)
-    context = {"liked_movies": recomended_movies}
+    #pagination handles the movie listings when we extend from index    
+    paginator = Paginator(recomended_movies, page_num_movies)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    context = {"page_obj": page_obj}
     return render(request, "vote/recommender.html",context)
 
 

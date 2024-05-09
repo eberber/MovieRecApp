@@ -8,9 +8,19 @@
 
 </head>
 
-<body>
-    <header class="nameHighlight centerText ">Movie Finder! Welcome </header>
-    <a href="/vote/recommender/">Recommend me!</a>  
+<body class="body">
+    <!-- <header class="nameHighlight centerText"> <a href="/vote/">Movie Finder! Welcome </a> </header> -->
+<header>
+    <img src="{% static 'images/icons8-movie-projector-100.png'%}">
+    <nav>
+        <ul>
+            <li><a href="/vote/recommender/">Recommend me!</a>  </li>
+            <li><a href="/vote/">Home</a></li>
+
+        </ul>
+
+    </nav>
+</header>
     {% block movieList %}    
     {% endblock %}
 </body>
